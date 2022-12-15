@@ -1,8 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:sasa_florist/home_page.dart';
+import 'package:sasa_florist/model/user.dart';
 import 'package:sasa_florist/signup_page.dart';
 
 class SignIn extends StatefulWidget {
@@ -24,8 +23,15 @@ class _SignInState extends State<SignIn> {
             password);
             print("Login tess");
         if (response.data.length > 0) {
+          int id = response.data?[0]['id'];
+          String nama = response.data?[0]['nama'];
+          String imgUrl= response.data?[0]['imgUrl'];
+          String email = response.data?[0]['email'];
+          String password = response.data?[0]['password'];
+          String address= response.data?[0]['address'];
+
           print("Login success");
-          Navigator.push( context, MaterialPageRoute(builder: (context) => HomePage()));
+          Navigator.push( context, MaterialPageRoute(builder: (context) => HomePage(user: User(id: id, nama: nama, imgUrl: imgUrl, email: email, password: password, address: address),)));
         } else {
           final snackBar = SnackBar(
             backgroundColor: Colors.redAccent,

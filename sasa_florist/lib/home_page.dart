@@ -3,12 +3,14 @@ import 'package:sasa_florist/contact_page.dart';
 import 'package:sasa_florist/detail.dart';
 import 'package:sasa_florist/favorite_page.dart';
 import 'package:sasa_florist/model/bunga.dart';
+import 'package:sasa_florist/model/user.dart';
 import 'package:sasa_florist/profil_page.dart';
 import 'package:sasa_florist/search.dart';
 import 'package:sasa_florist/service/service_bunga.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  final User user;
+  const HomePage({super.key, required this.user});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -22,15 +24,16 @@ class _HomePageState extends State<HomePage> {
       });
    }
 
-   List pages = [
-    HomeBody(),
-    FavoritePage(),
-    Search(),
-    ProfilPage(),
-    ContactPage()
-   ];
   @override
   Widget build(BuildContext context) {
+    List pages = [
+      HomeBody(),
+      FavoritePage(),
+      Search(),
+      ProfilPage(user: widget.user,),
+      ContactPage()
+   ];
+
      return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         onTap: onTap,
