@@ -62,136 +62,133 @@ class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
+      backgroundColor: Color.fromARGB(255, 240, 237, 237),
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
         child: Column(
           children: <Widget>[
             SizedBox(height: 120),
-            SizedBox(
-              height: 700,
-              child: Expanded(
-                flex: 1,
-                child: Column(
-                  children: <Widget>[
-                    Text("Welcome Sasa Florist", style: TextStyle(
-                      fontFamily: 'Poppins Bold',
-                      fontSize: 23,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w500,
-                    )),
-                    SizedBox(height: 30),
-                    Image.asset('assets/images/login.png', height: 188.82, width: 250),
-                    SizedBox(height: 35),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 10, left: 10),
-                      child: TextField(
-                        controller: controllerEmail,
-                        style: const TextStyle(
-                          fontFamily: 'Poppins Light',
-                          fontSize: 16,
-                        ),
-                        decoration: InputDecoration(
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                          fillColor: Colors.white,
-                          filled: true,
-                          labelText: "Enter your email",
-                          hintText: "Enter your email",
-                          contentPadding:
-                          EdgeInsets.symmetric(horizontal: 20, vertical: 18),
-                          hintStyle: const TextStyle(
-                            fontFamily: 'Poppins Light',
-                            fontSize: 16,
+            Column(
+              children: <Widget>[
+                Text("Welcome Sasa Florist", style: TextStyle(
+                  fontFamily: 'Poppins Bold',
+                  fontSize: 23,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w500,
+                )),
+                SizedBox(height: 30),
+                Image.asset('assets/images/login.png', height: 188.82, width: 250),
+                SizedBox(height: 35),
+                Padding(
+                  padding: const EdgeInsets.only(right: 10, left: 10),
+                  child: TextField(
+                    controller: controllerEmail,
+                    style: const TextStyle(
+                      fontFamily: 'Poppins Light',
+                      fontSize: 16,
+                    ),
+                    decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(color: Colors.white),
+                    ),
+                      fillColor: Colors.white,
+                      filled: true,
+                      labelText: "Enter your email",
+                      hintText: "Enter your email",
+                      contentPadding:
+                      EdgeInsets.symmetric(horizontal: 20, vertical: 18),
+                      hintStyle: const TextStyle(
+                        fontFamily: 'Poppins Light',
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 18),
+                Padding(
+                  padding: const EdgeInsets.only(right: 10, left: 10),
+                  child: TextField(
+                    controller: controllerPass,
+                    style: const TextStyle(
+                      fontFamily: 'Poppins Light',
+                      fontSize: 16,
+                    ),
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(color: Colors.white),
+                    ),
+                      fillColor: Colors.white,
+                      filled: true,
+                      labelText: "Confirm password",
+                      hintText: "Confirm password",
+                      contentPadding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
+                      hintStyle: const TextStyle(
+                        fontFamily: 'Poppins Light',
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 70),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 30),
+                  child: Column(
+                    children: <Widget>[
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          primary: Color.fromARGB(255, 10, 195, 232),
+                          minimumSize: const Size.fromHeight(55),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
                           ),
                         ),
-                      ),
-                    ),
-                    SizedBox(height: 18),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 10, left: 10),
-                      child: TextField(
-                        controller: controllerPass,
-                        style: const TextStyle(
+                        onPressed: (){
+                          login(controllerEmail.text, controllerPass.text);
+                        }, 
+                        child: Text("Sign In",
+                        style: TextStyle(
+                          fontFamily: 'Poppins Bold',
+                          fontSize: 25,
+                          color: Color.fromARGB(255, 117, 115, 115),
+                          fontWeight: FontWeight.w500
+                        )),  
+                      ),   
+                    ],
+                  ),
+                ),
+                SizedBox(height: 5),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text("Don't have an account?",
+                        style: TextStyle(
                           fontFamily: 'Poppins Light',
                           fontSize: 16,
-                        ),
-                        decoration: InputDecoration(
-                          enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                          fillColor: Colors.white,
-                          filled: true,
-                          labelText: "Confirm password",
-                          hintText: "Confirm password",
-                          contentPadding:
-                          const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
-                          hintStyle: const TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.w500
+                        )),
+                    SizedBox(width: 3),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) => SignUp()),
+                        );
+                      },
+                      child: const Text("Sign up",
+                          style: TextStyle(
                             fontFamily: 'Poppins Light',
                             fontSize: 16,
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 90),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 30),
-                      child: Column(
-                        children: <Widget>[
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              primary: Color.fromARGB(255, 10, 195, 232),
-                              minimumSize: const Size.fromHeight(55),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                            ),
-                            onPressed: (){
-                              login(controllerEmail.text, controllerPass.text);
-                            }, 
-                            child: Text("Sign In",
-                            style: TextStyle(
-                              fontFamily: 'Poppins Bold',
-                              fontSize: 25,
-                              color: Color.fromARGB(255, 117, 115, 115),
-                              fontWeight: FontWeight.w500
-                            )),  
-                          ),   
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: 5),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text("Don't have an account?",
-                            style: TextStyle(
-                              fontFamily: 'Poppins Light',
-                              fontSize: 16,
-                              color: Colors.grey,
-                              fontWeight: FontWeight.w500
-                            )),
-                        SizedBox(width: 3),
-                        TextButton(
-                          onPressed: () {
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(builder: (context) => SignUp()),
-                            );
-                          },
-                          child: const Text("Sign up",
-                              style: TextStyle(
-                                fontFamily: 'Poppins Light',
-                                fontSize: 16,
-                                color: Color.fromARGB(255, 10, 195, 232),
-                              )),
-                        ),
-                      ],
+                            color: Color.fromARGB(255, 10, 195, 232),
+                          )),
                     ),
                   ],
                 ),
-              ),
+              ],
             ),
           ],
         ),
